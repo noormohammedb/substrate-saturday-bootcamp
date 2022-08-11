@@ -8,8 +8,9 @@ pub mod pallet {
 		dispatch::{DispatchResult, DispatchResultWithPostInfo},
 		pallet_prelude::*,
 		sp_runtime::traits::{Hash, Zero},
-		traits::{Currency, ExistenceRequirement, IsType, Randomness},
+		traits::{Currency, ExistenceRequirement, Randomness},
 	};
+	// use frame_system::{pallet_prelude::*, Config};
 	use frame_system::pallet_prelude::*;
 	use sp_core::H256;
 
@@ -25,7 +26,7 @@ pub mod pallet {
 	#[pallet::config]
 	pub trait Config: pallet_balances::Config + frame_system::Config {
 		/// Because this pallet emits events, it depends on the runtime's definition of an event.
-		type Even: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
+		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 
 		/// The Currency handler for the Kitties pallet.
 		type Currency: Currency<Self::AccountId>;
@@ -40,20 +41,23 @@ pub mod pallet {
 	}
 
 	#[pallet::event]
-	#[pallet::metadata(T::AccountId = "AccountId")]
+	// #[pallet::metadata(T::AccountId = "AccountId")] // <----------------------- error
 	#[pallet::generate_deposit(pub(super) fn deposit_event)]
 	pub enum Event<T: Config> {
 		// TODO Part III
 	}
 
 	// ACTION: Storage item to keep a count of all existing Kitties.
+	#[pallet::storage]
+	#[pallet::getter(fn kitty_cnt)]
+	pub(super) type kittyCnt<T: Config> = StorageValue<_, u64, ValueQuery>;
 
 	// TODO Part II: Remaining storage items.
 
 	// TODO Part III: Our pallet's genesis configuration.
 
 	#[pallet::call]
-	impl<T: Config> pallet<T> {
+	impl<T: Config> Pallet<T> {
 		// TODO Part III: create_kitty
 
 		// TODO Part III: set_price
@@ -67,7 +71,7 @@ pub mod pallet {
 
 	// TODO Parts II: helper function for Kitty struct
 
-	impl<T: Config> pallet<T> {
+	impl<T: Config> Pallet<T> {
 		// TODO Part III: helper functions for dispatchable functions
 
 		// TODO: increment_nonce, random_hash, mint, transfer_from
