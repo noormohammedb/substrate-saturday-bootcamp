@@ -6,3 +6,7 @@
 	path = substrate-node-template
 	url = https://github.com/noormohammedb/substrate-node-template
    branch = main
+[submodule "kitties-tutorial"]
+	path = kitties-tutorial
+	url = https://github.com/noormohammedb/substrate-kitties
+   branch = master
