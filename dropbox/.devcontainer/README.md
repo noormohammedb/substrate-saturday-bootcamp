@@ -1,0 +1,1 @@
+integrating https://github.com/microsoft/vscode-dev-containers/tree/main/containers/rust/.devcontainer for rust developement for codespace
