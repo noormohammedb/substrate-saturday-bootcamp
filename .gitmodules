@@ -1,0 +1,8 @@
+[submodule "dropbox-clone-substrate"]
+	path = dropbox-clone-substrate
+	url = https://github.com/noormohammedb/dropbox-clone-substrate
+   branch = master
+[submodule "substrate-node-template"]
+	path = substrate-node-template
+	url = https://github.com/noormohammedb/substrate-node-template
+   branch = main
