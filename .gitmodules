@@ -10,3 +10,7 @@
 	path = kitties-tutorial
 	url = https://github.com/noormohammedb/substrate-kitties
    branch = master
+[submodule "rust-practice"]
+	path = rust-practice
+	url = https://github.com/noormohammedb/rust-practice
+   branch = master
